@@ -1,0 +1,48 @@
+CREATE DATABASE IF NOT EXISTS SchoolMgmt;
+USE SchoolMgmt;
+
+CREATE TABLE IF NOT EXISTS student (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    dept VARCHAR(50),
+    name VARCHAR(100),
+    nid VARCHAR(30),
+    birth DATE,
+    address TEXT
+);
+
+CREATE TABLE IF NOT EXISTS teacher (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    dept VARCHAR(50),
+    name VARCHAR(100),
+    nid VARCHAR(30),
+    birth DATE,
+    address TEXT
+);
+
+CREATE TABLE IF NOT EXISTS course (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    dept VARCHAR(50),
+    title VARCHAR(100),
+    credit FLOAT,
+    syllabus TEXT
+);
+
+CREATE TABLE IF NOT EXISTS payment (
+    payment_id INT PRIMARY KEY AUTO_INCREMENT,
+    student_id INT,
+    amount DECIMAL(10,2),
+    date DATE
+);
+
+CREATE TABLE IF NOT EXISTS course_teacher (
+    course_id INT,
+    teacher_id INT,
+    PRIMARY KEY (course_id, teacher_id)
+);
+
+CREATE TABLE IF NOT EXISTS course_semester (
+    course_id INT,
+    dept VARCHAR(50),
+    semester VARCHAR(20),
+    PRIMARY KEY (course_id, dept, semester)
+);
